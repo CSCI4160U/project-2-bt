@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(CharacterMovement))]
 [RequireComponent(typeof(Health))]
 public class PlayerInput : MonoBehaviour, ISaveable
 {
     [SerializeField] private Transform spine;
+    [SerializeField] private Gun gun;
+    [SerializeField] private LayerMask shootLayerMask;
+    [SerializeField] private UnityEvent onShoot;
 
     private CharacterMovement character;
     private float spineRotation = 0.0f;
     private Camera mainCamera;
-    private Vector3 mainCameraInitialPosition;
 
     public float SpineRotation { get => spineRotation; }
+    public UnityEvent OnShoot { get => onShoot; }
 
     private void Start()
     {
         character = GetComponent<CharacterMovement>();
         Cursor.lockState = CursorLockMode.Locked;
         mainCamera = Camera.main;
-        mainCameraInitialPosition = mainCamera.transform.position - spine.transform.position;
 	}
 
     private void Update()
@@ -55,8 +58,21 @@ public class PlayerInput : MonoBehaviour, ISaveable
         character.Rotate(rotationX);
 
         float rotationY = Input.GetAxis("Mouse Y");
-        //spine.Rotate(new Vector3(rotationY, 0.0f, 0.0f));
         spine.localRotation *= Quaternion.Euler(new Vector3(rotationY, 0.0f, 0.0f));
+
+        // Shooting
+        if (Input.GetMouseButtonDown(0) && character.Aiming)
+        {
+            gun.Fire();
+            onShoot.Invoke();
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 40.0f, shootLayerMask))
+            {
+                if (hit.transform.TryGetComponent(out ShootDetector det))
+                {
+                    det.OnShoot.Invoke();
+                }
+            }
+        }
     }
 
     private void LateUpdate()

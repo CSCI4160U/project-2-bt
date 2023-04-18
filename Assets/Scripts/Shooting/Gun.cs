@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] private AudioSource sound;
+
     public void Fire()
     {
-        Debug.Log("Fire");
+        sound.Play();
     }
 }

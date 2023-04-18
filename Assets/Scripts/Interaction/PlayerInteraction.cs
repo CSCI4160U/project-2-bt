@@ -69,7 +69,7 @@ public class PlayerInteraction : MonoBehaviour
                 tooltips.Add($"{key}: {interactable.GetTooltipText()}");
 			}
 
-			yield return new WaitForSeconds(0.5f);
+			yield return new WaitForSeconds(0.2f);
         }
     }
 

@@ -19,6 +19,8 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private UnityEvent<EnemyState> onStateChanged;
 
+    [SerializeField] private Gun gun;
+
     [Header("Patrolling")]
     [Tooltip("Probability of the enemy stopping for a few seconds upon reaching a waypoint")]
     [SerializeField] [Range(0.0f, 1.0f)] private float pauseChance = 0.3f;
@@ -61,6 +63,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.angularSpeed = characterMovement.RotationSpeed;
 
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform.GetComponent<PlayerInput>().OnShoot.AddListener(OnPlayerShoot);
 
         // Set waypoint index to the closest waypoint
         if (waypoints.Count > 1)
@@ -162,6 +165,24 @@ public class EnemyAI : MonoBehaviour
         }
 	}
 
+    private void OnPlayerShoot()
+    {
+        if (Vector3.Distance(playerTransform.position, transform.position) < alertMaxDistance)
+        {
+            if (state == EnemyState.Patrolling)
+            {
+                AlertToPosition(playerTransform.position);
+            }
+            else if (state == EnemyState.Alerted)
+            {
+                if (CanSeePlayer())
+                {
+                    State = EnemyState.Hunting;
+                }
+            }
+        }
+    }
+
     private void UpdateHunting()
     {
         // Go back to alert state if player is no longer visible
@@ -195,6 +216,7 @@ public class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(shootingDelay);
         if (state == EnemyState.Hunting)
         {
+            gun.Fire();
             playerTransform.GetComponent<Health>().Damage(1.0f);
         }
         shootCooldown = false;

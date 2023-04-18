@@ -9,6 +9,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 public class Hostage : MonoBehaviour, ISaveable
 {
+    [SerializeField] private AudioSource thankYouSound;
+
     private bool followingPlayer = false;
 	private NavMeshAgent navMeshAgent;
 	private CharacterMovement characterMovement;
@@ -36,7 +38,7 @@ public class Hostage : MonoBehaviour, ISaveable
 
 		if (playerDistance > 8.0f)
 		{
-			transform.position = playerTransform.position;
+			transform.position = playerTransform.position - playerTransform.forward;
 		}
 		else if (playerDistance > 4.0f)
         {
@@ -56,6 +58,7 @@ public class Hostage : MonoBehaviour, ISaveable
     {
 		Invoke(nameof(AnimationComplete), 6.5f);
 		characterMovement.Animator.SetTrigger("Stand Up");
+        thankYouSound.Play();
 	}
 
     [System.Serializable]

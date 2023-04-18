@@ -14,6 +14,10 @@ _**Note:** You can delete the unused rows from the table, if working alone._
 
 _**Note:** Collaboration (outside of your group) should be limited to non-technical, non-programming discussions only, and sharing of code is prohibited._
 
+## Attribution
+
+* All sounds from Pixabay (https://pixabay.com)
+
 ## Overview
 
 For this major group project, you will work on a 3D game of your choosing (and a trailer video).  It should be production ready, so take care to collect the right assets, make the game playable, make it fun, and test it thoroughly before submitting!
