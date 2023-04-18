@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 16a5a1f9d7d02f543afeb532efadd5ad
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - alertIndicator: {instanceID: 0}
+  - HuntIndicator: {instanceID: 0}
+  - minimapObject: {instanceID: 0}
+  - patrollingMaterial: {fileID: 2100000, guid: 10e9eb8c00afe4b44867d2b15cef4473,
+      type: 2}
+  - alertMaterial: {fileID: 2100000, guid: bb7552131ecf1534aa59089caa74bb34, type: 2}
+  - huntingMaterial: {fileID: 2100000, guid: 9f8e858d359105b4586705d6e48d171b, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
