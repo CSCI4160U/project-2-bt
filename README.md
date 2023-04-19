@@ -18,6 +18,9 @@ _**Note:** Collaboration (outside of your group) should be limited to non-techni
 
 * All sounds from Pixabay (https://pixabay.com)
 * Terrain textures from Poliigon (https://www.poliigon.com/texture/ground-forest-003/1949, https://www.poliigon.com/texture/ground-dirt-rocky-002/4573)
+* Industrial building set: https://assetstore.unity.com/packages/3d/environments/industrial/modular-industrial-set-214374
+* First aid kit model: https://assetstore.unity.com/packages/3d/props/first-aid-set-160073
+* Pistol model: https://assetstore.unity.com/packages/3d/props/guns/1911-pistol-pack-88439
 
 ## Overview
 
