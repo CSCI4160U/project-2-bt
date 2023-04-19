@@ -6,7 +6,7 @@ You can work on this assignment alone or in a group of no more than 2 students.
 | :------------------------- |:------------------:|
 | Bence Takacs               | BenceTakacs15      |
 
-Trailer video URL: _________________________
+Trailer video URL: https://youtu.be/HPlpNGF2CHE
 
 _**Note:** The commit logs will be examined to be sure that both participants participated equally on this project._
 
