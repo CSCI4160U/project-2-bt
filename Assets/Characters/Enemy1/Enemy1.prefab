@@ -595,7 +595,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3179497657684380108}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.19
   m_Height: 1.82
   m_Direction: 1
@@ -1043,6 +1043,33 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &3749924572608896311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179497657684380108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b21c638713f19d49a0e650ca0e12885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4124744882762813116}
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: Damage
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 2
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4124744882762813116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1119,33 +1146,6 @@ MonoBehaviour:
   patrollingMaterial: {fileID: 2100000, guid: 10e9eb8c00afe4b44867d2b15cef4473, type: 2}
   alertMaterial: {fileID: 2100000, guid: bb7552131ecf1534aa59089caa74bb34, type: 2}
   huntingMaterial: {fileID: 2100000, guid: 9f8e858d359105b4586705d6e48d171b, type: 2}
---- !u!114 &3749924572608896311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3179497657684380108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b21c638713f19d49a0e650ca0e12885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onShoot:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4124744882762813116}
-        m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: Damage
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 2
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &3306587604332170520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8269195505564239483, guid: e23bad50f8f3d7140916f7eb905f8e5b,

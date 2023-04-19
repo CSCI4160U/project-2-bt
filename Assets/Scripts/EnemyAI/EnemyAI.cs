@@ -92,7 +92,7 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
 
-        characterMovement.Animator.SetFloat("Vertical", navMeshAgent.velocity.z);
+        characterMovement.Animator.SetFloat("Vertical", transform.InverseTransformVector(navMeshAgent.velocity).z);
     }
 
     public void Load(EnemyState state, int waypointIndex, float alertTime, Vector3 destination, float health)

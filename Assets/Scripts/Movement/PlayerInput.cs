@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour, ISaveable
     [SerializeField] private Transform spine;
     [SerializeField] private Gun gun;
     [SerializeField] private LayerMask shootLayerMask;
+    [SerializeField] private PauseMenu pauseMenu;
     [SerializeField] private UnityEvent onShoot;
 
     private CharacterMovement character;
@@ -30,6 +31,9 @@ public class PlayerInput : MonoBehaviour, ISaveable
 
     private void Update()
     {
+        if (pauseMenu.Paused)
+            return;
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -77,6 +81,9 @@ public class PlayerInput : MonoBehaviour, ISaveable
 
     private void LateUpdate()
     {
+        if (pauseMenu.Paused)
+            return;
+
 		float rotationY = Input.GetAxis("Mouse Y");
         float oldSpineRotation = spineRotation;
         spineRotation -= rotationY * 2.0f;

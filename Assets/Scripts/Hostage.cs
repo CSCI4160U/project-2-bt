@@ -50,7 +50,8 @@ public class Hostage : MonoBehaviour, ISaveable
             navMeshAgent.isStopped = true;
         }
 
-        characterMovement.Animator.SetFloat("Speed", navMeshAgent.velocity.z);
+        Debug.Log(navMeshAgent.velocity);
+        characterMovement.Animator.SetFloat("Speed", Mathf.Abs(transform.InverseTransformVector(navMeshAgent.velocity).z));
     }
 
     [ContextMenu("Start Following Player")]
@@ -82,10 +83,10 @@ public class Hostage : MonoBehaviour, ISaveable
     public void Load(string savePath)
     {
         SaveData data = JsonUtility.FromJson<SaveData>(File.ReadAllText(savePath + "Hostage.json"));
-        transform.position = data.Position;
-        transform.rotation = Quaternion.Euler(data.Rotation);
-        if (data.FollowingPlayer)
+		if (data.FollowingPlayer)
         {
+			transform.position = data.Position;
+            transform.rotation = Quaternion.Euler(data.Rotation);
             followingPlayer = true;
             characterMovement.Animator.SetTrigger("Skip");
         }
