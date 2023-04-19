@@ -32,6 +32,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float alertFieldOfView = 180.0f;
     [Tooltip("After how many seconds of being in the alerted state idle at the player's last known position this enemy will return to patrolling")]
     [SerializeField] private float cancelAlertTime = 5.0f;
+    [Tooltip("After how many seconds of being in the alerted state the enemy will unconditionally return to the patrolling state")]
+    [SerializeField] private float forceCancelAlertTime = 20.0f;
     private float alertTime = 0.0f; // Timestamp for when alerted state was entered
 
     [Header("Hunting")]
@@ -157,7 +159,8 @@ public class EnemyAI : MonoBehaviour
         else
         {
             // Check if alert state should be cancelled
-            if (Time.time - alertTime >= cancelAlertTime && Vector3.Distance(transform.position, navMeshAgent.destination) < 1.0f)
+            if (Time.time - alertTime >= cancelAlertTime && Vector3.Distance(transform.position, navMeshAgent.destination) < 1.0f ||
+                Time.time - alertTime >= forceCancelAlertTime)
             {
                 State = EnemyState.Patrolling;
                 SelectClosestWaypoint();
